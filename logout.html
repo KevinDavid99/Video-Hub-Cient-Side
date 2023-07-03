@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/css/authentication.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3{
+            color: rgb(47, 145, 17);
+        }
+        .card{
+            background-color: rgb(20, 20, 20);
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            padding: 55px;
+        }
+        a{
+            color: rgb(47, 145, 17);
+        }
+        a:hover{
+            color: rgba(68, 68, 229, 0.805);
+        }
+    </style>
+</head>
+<body style="padding: 60px;">
+    <div class="card">
+
+        <h3>
+            Youve been logged out.<br> <a href="/login.html">Log In </a>again
+        </h3>
+
+    </div>
+
+
+    <script>
+        fetch('http://127.0.0.1:8000/api/logout/',{
+            method : 'POST',
+            headers : {
+                'Authorization': `Token ${localStorage.getItem('Token')}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        localStorage.removeItem('UserId');
+        localStorage.removeItem('Username');
+        localStorage.removeItem('Token');
+    </script>
+</body>
+</html>
