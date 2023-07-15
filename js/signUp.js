@@ -20,7 +20,7 @@ form.addEventListener('submit', (event)=>{
     })
     .then((response) => {
         if(response.ok){
-            location.href = 'http://127.0.0.1:5503/login.html'
+            location.href = '/login.html'
             return response.json()
         }else{
             console.log('Network response was not ok');
