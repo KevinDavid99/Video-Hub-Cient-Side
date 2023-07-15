@@ -77,7 +77,7 @@ const searchBtn = document.getElementById('search')
 
 searchBtn.addEventListener('click', ()=>{
     const searchValue = searchedWord.value
-    location.href = `http://127.0.0.1:5503/index.html?search=${encodeURIComponent(searchValue)}`
+    location.href = `/index.html?search=${encodeURIComponent(searchValue)}`
 })
     
     const urlWordSearch = window.location.search
