@@ -22,7 +22,13 @@ fetch('http://127.0.0.1:8000/api/post_items/', {
     }
 }).then((data)=>{
     return data.json()
+    
 }).then(alldata =>{
+    let loadingmsg = document.getElementById('loadingmessage');
+    if (alldata) {
+        loadingmsg.style.display = 'none'
+    }
+
     console.log(alldata);
 
     let eachData = ''
