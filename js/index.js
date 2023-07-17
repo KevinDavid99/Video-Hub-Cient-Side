@@ -51,7 +51,7 @@ fetch('http://127.0.0.1:8000/api/post_items/', {
                     if(values.users.id === userId){ // Checks If the authenticated Post author(user) id is equal to the same authenticated user id in loalStorage
                         eachData +=
                         `
-                        <a class='option' href="#" id="edit-post">Edit</a>
+                        <a class='option' href="" id="edit-post">Edit</a>
                         <a class='option' href="" id="delete-post">Delete</a>
                         `
                     }
@@ -107,19 +107,19 @@ searchBtn.addEventListener('click', ()=>{
 
             if (searchResults) {
                 let eachData = '';
-                searchResults.map((values) => {
+                searchResults.map((value) => {
                     eachData += `
                         <div class="card">
-                            <a href="${values.video_url}" style='text-decoration:none;'>
-                            <img src="${values.image_url}" class="card__image">
+                            <a href="${value.video_url}" style='text-decoration:none;'>
+                            <img src="${value.image_url}" class="card__image">
                             <div class="card__content">
-                                <p>${values.title}</p>
-                                <small class="card__link">${values.category.name}</small>
+                                <p>${value.title}</p>
+                                <small class="card__link">${value.category.name}</small>
                             </div>
                             <div>
                                 <div>
-                                <small class="card__date" style="font-size:large">${values.users.username}</small>
-                                <small class="card__date">${values.created}</small>
+                                <small class="card__date" style="font-size:large">${value.users.username}</small>
+                                <small class="card__date">${value.created}</small>
                                 </div>
                             </div>
                             </a>
