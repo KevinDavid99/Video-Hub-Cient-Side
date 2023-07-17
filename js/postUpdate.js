@@ -64,7 +64,7 @@ fetch('http://127.0.0.1:8000/api/category_post/',{
         
         loadingIcon.style.display = 'none'
         if(response.json()){
-            location.href = '/index.html'
+            location.href = '/home.html'
         }
     })
     .then((data)=> console.log(data))

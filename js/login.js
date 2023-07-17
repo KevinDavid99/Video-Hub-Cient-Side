@@ -33,7 +33,7 @@ form.addEventListener('submit', (event)=>{
         if(data.token!== 'undefined'){
             localStorage.setItem('Token', data.token)
         }
-        location.href = '/index.html'
+        location.href = '/home.html'
 
     })
     .catch((err)=> {
