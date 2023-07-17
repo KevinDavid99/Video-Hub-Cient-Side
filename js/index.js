@@ -77,63 +77,59 @@ fetch('http://127.0.0.1:8000/api/post_items/', {
 
 
 
-const searchedWord = document.getElementById('searchedWord')
-const searchBtn = document.getElementById('search')
+const searchedWord = document.getElementById('searchedWord');
+const searchBtn = document.getElementById('search');
+
+searchBtn.addEventListener('click', () => {
+  const searchValue = searchedWord.value;
+  location.href = `/index.html?search=${encodeURIComponent(searchValue)}`;
+});
 
 
-searchBtn.addEventListener('click', ()=>{
-    const searchValue = searchedWord.value
-    location.href = `/index.html?search=${encodeURIComponent(searchValue)}`
+const urlWordSearch = window.location.search;
+const urlWord = new URLSearchParams(urlWordSearch);
+const searchedWords = urlWord.get('search');
 
-        
-    const urlWordSearch = window.location.search
-    const urlWord = new URLSearchParams(urlWordSearch)
+if (searchedWords) {
+  const cardsContainer = document.getElementById('cards');
 
-    const searchedWords = urlWord.get('search')
-    
-    if(searchedWords){
-        const cardsContainer = document.getElementById('cards');
+  fetch(`http://127.0.0.1:8000/api/post_items/search/?search=${searchedWords}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${localStorage.getItem('Token')}`,
+    },
+  }).then((response) => {
+    return response.json();
+  }).then((searchResults) => {
+    console.log(searchResults);
 
-        fetch(`http://127.0.0.1:8000/api/post_items/search/?search=${searchedWords}`, {
-            method: 'GET',
-            headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Token ${localStorage.getItem('Token')}`,
-            },
-        }).then((response) => {
-            return response.json();
-        }).then((searchResults) => {
-            console.log(searchResults);
-
-            if (searchResults) {
-                let eachData = '';
-                searchResults.map((value) => {
-                    eachData += `
-                        <div class="card">
-                            <a href="${value.video_url}" style='text-decoration:none;'>
-                            <img src="${value.image_url}" class="card__image">
-                            <div class="card__content">
-                                <p>${value.title}</p>
-                                <small class="card__link">${value.category.name}</small>
-                            </div>
-                            <div>
-                                <div>
-                                <small class="card__date" style="font-size:large">${value.users.username}</small>
-                                <small class="card__date">${value.created}</small>
-                                </div>
-                            </div>
-                            </a>
-                        </div>`;
-                });
-                cardsContainer.innerHTML = eachData;
-            }else if(!searchResults) {
-                cardsContainer.innerHTML = 'Word not found'
-            }
-        });
+    if (searchResults && searchResults.length > 0) {
+      let eachData = '';
+      searchResults.forEach((value) => {
+        eachData += `
+          <div class="card">
+            <a href="${value.video_url}" style='text-decoration:none;'>
+              <img src="${value.image_url}" class="card__image">
+              <div class="card__content">
+                <p>${value.title}</p>
+                <small class="card__link">${value.category.name}</small>
+              </div>
+              <div>
+                <div>
+                  <small class="card__date" style="font-size:large">${value.users.username}</small>
+                  <small class="card__date">${value.created}</small>
+                </div>
+              </div>
+            </a>
+          </div>`;
+      });
+      cardsContainer.innerHTML = eachData;
+    } else {
+      cardsContainer.innerHTML = 'Word not found';
     }
-})
-
-
+  });
+}
 
 
 
