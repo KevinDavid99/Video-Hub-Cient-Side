@@ -84,8 +84,8 @@ const searchBtn = document.getElementById('search')
 searchBtn.addEventListener('click', ()=>{
     const searchValue = searchedWord.value
     location.href = `/index.html?search=${encodeURIComponent(searchValue)}`
-})
-    
+
+        
     const urlWordSearch = window.location.search
     const urlWord = new URLSearchParams(urlWordSearch)
 
@@ -131,6 +131,8 @@ searchBtn.addEventListener('click', ()=>{
             }
         });
     }
+})
+
 
 
 
