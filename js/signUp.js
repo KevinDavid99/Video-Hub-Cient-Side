@@ -4,10 +4,13 @@ const userName = document.getElementById('username');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2')
 let errmessage = document.getElementById('error-msgs')
+let loadingMsg = document.getElementById('loadingmessage');
 
 
 form.addEventListener('submit', (event)=>{
     event.preventDefault()
+
+    loadingMsg.style.display = 'block'
 
     const loginForm = new FormData
 
@@ -53,6 +56,7 @@ form.addEventListener('submit', (event)=>{
         setTimeout(() => {
             errmessage.style.display = 'none'
         }, 5000);
+        loadingMsg.style.display = 'none'
     })
     .finally(()=> form.reset())
 
