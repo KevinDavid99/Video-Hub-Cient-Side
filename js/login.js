@@ -2,15 +2,19 @@
 const form = document.getElementById('loginform');
 const userName = document.getElementById('username');
 const password = document.getElementById('password');
-let errmessage = document.getElementById('error-msg')
+let errmessage = document.getElementById('error-msg');
+let loadingMsg = document.getElementById('loadingmessage');
 
 form.addEventListener('submit', (event)=>{
     event.preventDefault()
+    
+    loadingMsg.style.display = 'block'
 
     const loginForm = new FormData
 
     loginForm.append('username', userName.value);
     loginForm.append('password', password.value);
+
 
     
     fetch('http://127.0.0.1:8000/api/login/', {
@@ -21,7 +25,7 @@ form.addEventListener('submit', (event)=>{
         if(response.ok){
             return response.json()
         }else{
-            console.log('Network response was not ok');
+            console.log('Network was not ok');
         }
     })
     .then((data)=> {
@@ -38,12 +42,10 @@ form.addEventListener('submit', (event)=>{
         setTimeout(() => {
             errmessage.style.display = 'none'
         }, 5000);
+        loadingMsg.style.display = 'none'
     })
     .finally(()=>{
         form.reset()
     })
 
 });
-
-
-

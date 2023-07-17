@@ -5,11 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Login Form </title> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/authentication.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
   </head>
   <body>
     <div class="container">
+      <div id="loading">
+        <h2 id="loadingmessage" style="text-align: center; margin-bottom: 8px; color: rgb(215, 215, 215); display: none;">Loading please wait...</h2>
+        <i class="fa-thin fa-spinner"></i>
+      </div>
       <div class="wrapper">
         <h2 id="error-msg" style="color: red"> </h2>
         <div class="title"><span>Login Form</span></div>
