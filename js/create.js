@@ -33,7 +33,7 @@ fetch('http://127.0.0.1:8000/api/category_post/',{
     formData.append('title', title);
     formData.append('category', newCategory.id);
 
-    fetch('http://127.0.0.1:8000/api/post_items/', {
+    fetch('https://videohubserversideapi.onrender.com/api/post_items/', {
         method : 'POST',
         body : formData,
         headers : {

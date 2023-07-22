@@ -7,7 +7,7 @@ const searchedWords = urlWord.get('search')
 if(searchedWords){
     const cardsContainer = document.getElementById('cards');
 
-    fetch(`http://127.0.0.1:8000/api/post_items/search/?search=${searchedWords}`, {
+    fetch(`https://videohubserversideapi.onrender.com/api/post_items/search/?search=${searchedWords}`, {
         method: 'GET',
         headers: {
         'Content-Type': 'application/json',

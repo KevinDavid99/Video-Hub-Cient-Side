@@ -21,7 +21,7 @@ const postId = editData.postId // the post id to be updated
 
 
 
-fetch('http://127.0.0.1:8000/api/category_post/',{
+fetch('https://videohubserversideapi.onrender.com/api/category_post/',{
 }).then(data => data.json()).then((objdata)=>{
     objdata.map(datas =>{
         console.log(datas);

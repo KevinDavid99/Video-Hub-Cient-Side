@@ -14,7 +14,7 @@ toggleBtn.addEventListener('click', ()=>{
 const userId = Number(localStorage.getItem('UserId')) // This variable takes the authenticated user id stored in localStorage
 
 
-fetch('http://127.0.0.1:8000/api/post_items/', {
+fetch('https://videohubserversideapi.onrender.com/api/post_items/', {
     method : 'GET',
     headers : {
         'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ btnCards.addEventListener('click', (e)=>{
         let cardContent = cardDiv.dataset.id
         
         
-        fetch(`http://127.0.0.1:8000/api/post_items/${cardContent}/`,{
+        fetch(`https://videohubserversideapi.onrender.com/api/post_items/${cardContent}/`,{
             method : 'DELETE',
             headers : {
                 'Authorization': `Token ${localStorage.getItem('Token')}`,
@@ -144,7 +144,7 @@ btnCards.addEventListener('click', (e)=>{
 
 })
 
-fetch('http://127.0.0.1:8000/api/user/', {
+fetch('https://videohubserversideapi.onrender.com/api/user/', {
     method : 'GET',
     headers : {
         'Content-Type': 'application/json',

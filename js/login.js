@@ -17,7 +17,7 @@ form.addEventListener('submit', (event)=>{
 
 
     
-    fetch('http://127.0.0.1:8000/api/login/', {
+    fetch('https://videohubserversideapi.onrender.com/api/login/', {
         method : 'POST',
         body : loginForm
     })
